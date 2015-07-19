@@ -23,6 +23,7 @@
         <activity
             android:name=".AddTask"
             android:label="Start adding Tasks"/>
+        <activity android:name=".ViewTasks"/>
     </application>
 
 </manifest>

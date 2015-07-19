@@ -4,9 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Created by Ranjana on 7/17/2015.
@@ -15,21 +16,26 @@ public class AddTask extends Activity {
 
     private EditText taskName;
     private EditText taskDetail;
-    private Button   btntaskSubmit;
+    private ArrayList<String> myTaskList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_task_add);
+        taskName = (EditText) findViewById(R.id.taskName);
+        taskDetail =  (EditText) findViewById(R.id.taskDetail);
     }
 
     public void submitTaskInformation(View view) {
-        taskName = (EditText) findViewById(R.id.taskName);
-        taskDetail =  (EditText) findViewById(R.id.taskDetail);
-        btntaskSubmit = (Button) findViewById(R.id.taskSubmit);
+        String name = taskName.getText().toString();
+        String body = taskDetail.getText().toString();
+
+        myTaskList.add(name);
+        myTaskList.add(body);
         Toast.makeText(this, "Task is added", Toast.LENGTH_SHORT).show();
-        Intent showProfile = new Intent(this, TaskProfile.class);
-        startActivity(showProfile);
+        Intent showTask = new Intent(this, ViewTasks.class);
+        showTask.putStringArrayListExtra("TaskValues",myTaskList);
+        startActivity(showTask);
 
     }
 }

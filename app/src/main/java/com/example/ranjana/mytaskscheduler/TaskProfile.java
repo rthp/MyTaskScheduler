@@ -8,20 +8,25 @@ import android.view.View;
 /**
  * Created by Ranjana on 7/17/2015.
  */
-public class TaskProfile extends Activity {
 
+public class TaskProfile extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_profile);
-
     }
-
-
 
     public void addNewTask(View view) {
         Intent addTask = new Intent(this, AddTask.class);
         startActivity(addTask);
     }
+
+    public void viewTasks(View view) {
+        Intent viewTasks = new Intent(this, ViewTasks.class);
+        startActivity(viewTasks);
+
+    }
+
+
 }
